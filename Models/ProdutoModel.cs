@@ -1,4 +1,4 @@
-﻿namespace WebAPI.net9.Models
+﻿namespace WebAPI.net9.Models // Modelo da tabela do DB
 {
     public class ProdutoModel
     {   // Propriedades que permitem a criação e alteração do produto

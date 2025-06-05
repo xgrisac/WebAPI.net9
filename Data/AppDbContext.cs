@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore; // Responsável por ciar a conexão, enviar e coletar dados do banco de dados
+﻿using Microsoft.EntityFrameworkCore; // Esta parte da aplicação é responsável por ciar a conexão, enviar e coletar dados do banco de dados
 using WebAPI.net9.Models; 
 
 namespace WebAPI.net9.Data 
