@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Scalar.AspNetCore; // Scalar substituindo Swagger para documentação de API
 using WebAPI.net9.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,7 @@ var app = builder.Build(); // Começo da aplicação
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.MapScalarApiReference(); // Mapeia referências de API para o ambiente de desenvolvimento
     app.MapOpenApi();
 }
 

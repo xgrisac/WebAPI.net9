@@ -12,7 +12,8 @@
           "Microsoft.EntityFrameworkCore": "9.0.5",
           "Microsoft.EntityFrameworkCore.Design": "9.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.5",
-          "Microsoft.EntityFrameworkCore.Tools": "9.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "9.0.5",
+          "Scalar.AspNetCore": "2.4.13"
         },
         "runtime": {
           "WebAPI.net9.dll": {}
@@ -759,6 +760,14 @@
           }
         }
       },
+      "Scalar.AspNetCore/2.4.13": {
+        "runtime": {
+          "lib/net9.0/Scalar.AspNetCore.dll": {
+            "assemblyVersion": "2.4.13.0",
+            "fileVersion": "2.4.13.0"
+          }
+        }
+      },
       "System.ClientModel/1.0.0": {
         "dependencies": {
           "System.Memory.Data": "1.0.2",
@@ -1351,6 +1360,13 @@
       "sha512": "sha512-YqueG52R/Xej4VVbKuRIodjiAhV0HR/XVbLbNrJhCZnzjnSjgMJ/dCdV0akQQxavX6hp/LC6rqLGLcXeQYU7XA==",
       "path": "mono.texttemplating/3.0.0",
       "hashPath": "mono.texttemplating.3.0.0.nupkg.sha512"
+    },
+    "Scalar.AspNetCore/2.4.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7EA3SCKM2n7oPJ/yraN5xReXVIaT1rOFA8aasrcLnS1HIwPHJox0IV2Bs/XmFnwgTkSOXtSWjseO3ZhXPNSKnQ==",
+      "path": "scalar.aspnetcore/2.4.13",
+      "hashPath": "scalar.aspnetcore.2.4.13.nupkg.sha512"
     },
     "System.ClientModel/1.0.0": {
       "type": "package",
