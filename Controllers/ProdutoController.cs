@@ -23,8 +23,7 @@ namespace WebAPI.net9.Controllers
         }
 
 
-        [HttpGet]
-        [Route("{id}")] 
+        [HttpGet("{id}")]
         public ActionResult<ProdutoModel> BuscarProdutoPorId(int id) 
         {
             var produto = _context.Produtos.Find(id);
@@ -49,6 +48,28 @@ namespace WebAPI.net9.Controllers
             _context.SaveChanges(); // IMPORTANTE* Salva as alterações no banco de dados 
 
             return CreatedAtAction(nameof(BuscarProdutoPorId), new { id = produtoModel.Id }, produtoModel); // Retorna o produto criado com o status 201 (Created)
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult EditarProduto(ProdutoModel produtoModel, int id)
+        {
+            var produto = _context.Produtos.Find(id); // find busca o elemento dentro da tabela produtos do DB
+
+            if(produto == null)
+            {
+                return NotFound("Registro não localizado");
+            }
+            // Atualizo o produto antigo com o novo conteúdo
+            produto.Nome = produtoModel.Nome;
+            produto.Descricao = produtoModel.Descricao;
+            produto.Marca = produtoModel.Marca;
+            produto.QuantidadeEstoque = produtoModel.QuantidadeEstoque;
+            produto.CodigoDeBarras = produtoModel.CodigoDeBarras;
+
+            _context.Produtos.Update(produto);
+            _context.SaveChanges();
+
+            return Ok(produto);
         }
     }
 }
