@@ -32,7 +32,8 @@ public class ProdutoModel
     public string CodigoDeBarras { get; set; }
     public string Marca { get; set; }
 }
-🌐 Endpoints
+
+## 🌐 Endpoints
 Método	Rota	Descrição
 GET	/api/produto - Lista todos os produtos
 GET	/api/produto/{id} - Busca produto por ID
@@ -41,7 +42,7 @@ POST	/api/produto - Cadastra um novo produto
 DELETE	/api/produto/{id} -	Remove um produto
 /api/produto/buscar?nome={nome}&marca={marca} -	Busca por nome, marca ou ambos.
 
-▶️ Como Executar Localmente
+## ▶️ Como Executar Localmente
 Clone o repositório:
 
 bash
@@ -64,9 +65,12 @@ Copiar
 Editar
 https://localhost:{porta}/scalar
 
-👨‍💻 Autor
+## 👨‍💻 Autor
 Desenvolvido por **Isac Ribeiro** — estudante de Engenharia de Software, especialista no Desenvolvimento Web, .NET e soluções backend.
 
 Este projeto foi desenvolvido acompanhando um curso em vídeo da Crislaine D'Paula, no entanto, tomei a liberdade de inserir algumas funcionalidades extras para aprimorar a API.
 
 Conecte-se comigo no [LinkedIn](https://www.linkedin.com/in/seu-perfil).
+
+
+![PROJETOFINALIZADO](https://github.com/user-attachments/assets/39e68d0a-1190-4815-a319-412ec6a2dd11)
