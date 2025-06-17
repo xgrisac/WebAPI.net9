@@ -91,5 +91,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.net9.Controllers.ProdutoController",
+    "Method": "DeletarProduto",
+    "RelativePath": "api/Produto/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

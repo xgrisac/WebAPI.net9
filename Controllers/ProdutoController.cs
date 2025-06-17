@@ -15,7 +15,7 @@ namespace WebAPI.net9.Controllers
             _context = context; // Me da acesso ao contexto do banco de dados (DbContext)
         }
 
-        [HttpGet]
+        [HttpGet("Estoque")]
         public ActionResult<List<ProdutoModel>> BuscarProdutos() // Pega todos os produtos cadastrados no DB e retorna em lista na API
         {
            var produtos = _context.Produtos.ToList(); // Busca todos os produtos e transforma em lista
@@ -70,6 +70,34 @@ namespace WebAPI.net9.Controllers
             _context.SaveChanges();
 
             return Ok(produto);
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeletarProduto(int id)
+        {
+             var produto = _context.Produtos.Find(id);
+
+            if(produto == null)
+            {
+                return NotFound("Registro não localizado");
+            }
+
+            _context.Produtos.Remove(produto); // Remove o produto do banco de dados
+            _context.SaveChanges();
+
+            // return NoContent(); // Retorna 204 (No Content) todavia, o Scalar aguarda um retorno, portanto, exibe um pop up de erro
+            return Ok($"Conteúdo do ID {id} deletado com sucesso!");
+        }
+
+        [HttpGet("Buscar")] // Busca os produtos por nome
+        public ActionResult<List<ProdutoModel>> BuscarPorNomeOuMarca(string? nome, string? marca)
+        {
+            var produtos = _context.Produtos
+                .Where(p => (nome == null || p.Nome.Contains(nome)) &&
+                            (marca == null || p.Marca.Contains(marca)))
+                .ToList();
+
+            return Ok(produtos);
         }
     }
 }
