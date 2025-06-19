@@ -5,8 +5,9 @@ using WebAPI.net9.Models;
 
 namespace WebAPI.net9.Controllers
 {
+    [ApiController] // Garante a validação no Data Annotations
     [Route("api/[controller]")]
-    [ApiController]
+    
     public class ProdutoController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -37,12 +38,15 @@ namespace WebAPI.net9.Controllers
 
 
         [HttpPost]
-        public ActionResult<ProdutoModel> CriarProduto(ProdutoModel produtoModel)
+        public ActionResult<ProdutoModel> CriarProduto([FromBody] ProdutoModel produtoModel)
         {
             if (produtoModel == null) // Verifica se o valor está vazio
             {
                 return BadRequest("Produto inválido"); // Erro 400
             }
+
+            if (produtoModel.Id != 0)
+                return BadRequest("O campo 'Id' não deve ser informado. Ele é gerado automaticamente, favor excluir o campo ID do seu JSON.");
 
             _context.Produtos.Add(produtoModel); // Adiciona o produto no banco de dados
             _context.SaveChanges(); // IMPORTANTE* Salva as alterações no banco de dados 
@@ -51,7 +55,7 @@ namespace WebAPI.net9.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult EditarProduto(ProdutoModel produtoModel, int id)
+        public ActionResult EditarProduto([FromBody] ProdutoModel produtoModel, int id)
         {
             var produto = _context.Produtos.Find(id); // find busca o elemento dentro da tabela produtos do DB
 

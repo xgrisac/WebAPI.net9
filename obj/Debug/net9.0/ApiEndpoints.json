@@ -1,26 +1,6 @@
 [
   {
     "ContainingType": "WebAPI.net9.Controllers.ProdutoController",
-    "Method": "BuscarProdutos",
-    "RelativePath": "api/Produto",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[WebAPI.net9.Models.ProdutoModel, WebAPI.net9, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebAPI.net9.Controllers.ProdutoController",
     "Method": "CriarProduto",
     "RelativePath": "api/Produto",
     "HttpMethod": "POST",
@@ -107,5 +87,56 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.net9.Controllers.ProdutoController",
+    "Method": "BuscarPorNomeOuMarca",
+    "RelativePath": "api/Produto/Buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "marca",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[WebAPI.net9.Models.ProdutoModel, WebAPI.net9, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebAPI.net9.Controllers.ProdutoController",
+    "Method": "BuscarProdutos",
+    "RelativePath": "api/Produto/Estoque",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[WebAPI.net9.Models.ProdutoModel, WebAPI.net9, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
