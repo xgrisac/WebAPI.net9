@@ -2,7 +2,10 @@
 
 namespace WebAPI.net9.Models 
 {
-    public class ProdutoModel // Propriedades que permitem a criação e alteração do produto
+    /// <summary>
+    /// Representa um produto com suas propriedades para criação e alteração.
+    /// </summary>
+    public class ProdutoModel
     {   
         public int Id { get; set; }
 

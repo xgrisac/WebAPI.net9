@@ -76,7 +76,11 @@
             },
             "Scalar.AspNetCore": {
               "target": "Package",
-              "version": "[2.4.13, )"
+              "version": "[2.5.0, )"
+            },
+            "Scalar.AspNetCore.Swashbuckle": {
+              "target": "Package",
+              "version": "[2.5.0, )"
             }
           },
           "imports": [

@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Scalar.AspNetCore; // Scalar substituindo Swagger para documentação de API
+using Scalar.AspNetCore.Swashbuckle;
+using System.Reflection;
 using WebAPI.net9.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi()
+    .AddSwaggerGen(options =>
+    {
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        options.IncludeXmlComments(xmlPath);
+    });
 
 builder.Services.AddDbContext<AppDbContext>(options => // Configuração do DbContext para usar o SQL Server
 {

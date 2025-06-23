@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>1591</NoWarn>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -18,7 +20,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Scalar.AspNetCore" Version="2.4.13" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.5.0" />
+    <PackageReference Include="Scalar.AspNetCore.Swashbuckle" Version="2.5.0" />
   </ItemGroup>
+
+   <ItemGroup>
+	   <None Update="$(AssemblyName).xml">
+		   <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	   </None>
+   </ItemGroup>
 
 </Project>
