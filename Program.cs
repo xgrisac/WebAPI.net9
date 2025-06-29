@@ -1,13 +1,17 @@
-using Microsoft.EntityFrameworkCore;
+ï»¿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Scalar.AspNetCore; // Scalar substituindo Swagger para documentação de API
+using Scalar.AspNetCore; // Scalar substituindo Swagger para documentaÃ§Ã£o de API
 using Scalar.AspNetCore.Swashbuckle;
 using System.Reflection;
 using WebAPI.net9.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.SetMinimumLevel(LogLevel.Debug);
+
+// Add services to the container. 
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -19,17 +23,17 @@ builder.Services.AddOpenApi()
         options.IncludeXmlComments(xmlPath);
     });
 
-builder.Services.AddDbContext<AppDbContext>(options => // Configuração do DbContext para usar o SQL Server
+builder.Services.AddDbContext<AppDbContext>(options => // ConfiguraÃ§Ã£o do DbContext para usar o SQL Server
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); // Obtém a string de conexão do arquivo appsettings.json
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); // ObtÃ©m a string de conexÃ£o do arquivo appsettings.json
 }); 
 
-var app = builder.Build(); // Começo da aplicação
+var app = builder.Build(); // ComeÃ§o da aplicaÃ§Ã£o
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapScalarApiReference(); // Mapeia referências de API para o ambiente de desenvolvimento
+    app.MapScalarApiReference(); // Mapeia referÃªncias de API para o ambiente de desenvolvimento
     app.MapOpenApi();
 }
 

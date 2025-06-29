@@ -160,7 +160,6 @@ C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\WebAPI.n.5B55B0C9.Up2Date
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\WebAPI.net9.dll
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\refint\WebAPI.net9.dll
@@ -168,3 +167,6 @@ C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\WebAPI.net9.pdb
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\WebAPI.net9.genruntimeconfig.cache
 C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\ref\WebAPI.net9.dll
+C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\WebAPI.net9.Properties.Resources.resources
+C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\WebAPI.net9.csproj.GenerateResource.cache
+C:\Users\Windows 11\OneDrive\Documentos\Projects\WebApi.net9\WebAPI.net9\WebAPI.net9\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
