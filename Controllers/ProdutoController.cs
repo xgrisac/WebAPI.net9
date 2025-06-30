@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using WebAPI.net9.Data;
 using WebAPI.net9.Models;
@@ -32,14 +33,14 @@ namespace WebAPI.net9.Controllers
         /// </summary>
         /// <returns>Lista de produtos ou erro 500.</returns>
         [HttpGet("Estoque")]
-        public ActionResult<List<ProdutoModel>> BuscarProdutos()
+        public async Task<ActionResult<List<ProdutoModel>>> BuscarProdutos()
         {
             _logger.LogDebug("Iniciando requisição: BuscarProdutos");
 
             try
             {
-                var produtos = _context.Produtos.ToList(); // Busca todos os produtos e transforma em lista.
-                _logger.LogInformation("Lista de produtos retornada com sucesso. Total {Total}", produtos.Count); // produttos.Count retorna a quantidade de produtos encontrados
+                var produtos = await _context.Produtos.ToListAsync(); // Pega todos os produtos do banco de dados de forma assíncrona e transforma em lista
+                _logger.LogInformation("Lista de produtos retornada com sucesso. Total {Total}", produtos.Count); // Log informativo
                 return Ok(produtos);
             }
            
@@ -56,13 +57,13 @@ namespace WebAPI.net9.Controllers
         /// <param name="id">ID do produto.</param>
         /// <returns>Erro 404, produto encontrado ou erro 500.</returns>       
         [HttpGet("{id}")]
-        public ActionResult<ProdutoModel> BuscarProdutoPorId(int id) 
+        public async Task<ActionResult<ProdutoModel>> BuscarProdutoPorId(int id) 
         {
             _logger.LogDebug("Iniciando requisição: BuscarProdutosPorId");
 
             try
             {
-                var produto = _context.Produtos.Find(id); // Find busca dentro do banco de dados
+                var produto = await _context.Produtos.FindAsync(id); // Find busca dentro do banco de dados
                 if (produto == null) 
                 {
                     _logger.LogWarning("Produto com ID {Id} não encontrado.", id);
@@ -85,7 +86,7 @@ namespace WebAPI.net9.Controllers
         /// <param name="produtoModel">Objeto do produto a ser criado.</param>
         /// <returns>Erro 400, produto encontrado ou erro 500.</returns>
         [HttpPost]
-        public ActionResult<ProdutoModel> CriarProduto([FromBody] ProdutoModel produtoModel)
+        public async Task<ActionResult<ProdutoModel>> CriarProduto([FromBody] ProdutoModel produtoModel)
         {
             _logger.LogDebug("Iniciando requisição: CriarProduto");
 
@@ -104,7 +105,7 @@ namespace WebAPI.net9.Controllers
                 }
 
                 _context.Produtos.Add(produtoModel); // Adiciona o produto no banco de dados
-                _context.SaveChanges(); // Salva as alterações no banco de dados 
+                await _context.SaveChangesAsync(); // Salva as alterações no banco de dados 
 
                 _logger.LogInformation("Produto criado com sucesso. ID: {Id}", produtoModel.Id);
                 return CreatedAtAction(nameof(BuscarProdutoPorId), new { id = produtoModel.Id }, produtoModel); // Retorna o produto criado com o status 201 (Created)
@@ -124,13 +125,13 @@ namespace WebAPI.net9.Controllers
         /// <param name="id">ID do produto a ser atualizado.</param>
         /// <returns>Erro 404, produto encontrado ou erro 500.</returns>
         [HttpPut("{id}")]
-        public ActionResult EditarProduto([FromBody] ProdutoModel produtoModel, int id)
+        public async Task<ActionResult> EditarProduto([FromBody] ProdutoModel produtoModel, int id)
         {
             _logger.LogDebug("Iniciando requisição: EditarProduto");
 
             try
             {
-                var produto = _context.Produtos.Find(id); // find busca o elemento dentro da tabela produtos do DB
+                var produto = await _context.Produtos.FindAsync(id); // find busca o elemento dentro da tabela produtos do DB
 
                 if (produto == null)
                 {
@@ -145,7 +146,7 @@ namespace WebAPI.net9.Controllers
                 produto.CodigoDeBarras = produtoModel.CodigoDeBarras;
 
                 _context.Produtos.Update(produto);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 _logger.LogInformation("Produto com ID {Id} atualizado com sucesso", id);
                 return Ok(produto);
@@ -164,13 +165,13 @@ namespace WebAPI.net9.Controllers
         /// <param name="id">ID do produto a ser removido.</param>
         /// <returns>Erro 404, mensagem de sucesso ou erro 500.</returns>
         [HttpDelete("{id}")]
-        public ActionResult DeletarProduto(int id)
+        public async Task<ActionResult> DeletarProduto(int id)
         {
             _logger.LogDebug("Iniciando requisição: DeletarProduto");
 
             try
             {
-                var produto = _context.Produtos.Find(id);
+                var produto = await _context.Produtos.FindAsync(id);
 
                 if (produto == null)
                 {
@@ -179,7 +180,7 @@ namespace WebAPI.net9.Controllers
                 }
 
                 _context.Produtos.Remove(produto);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 _logger.LogInformation("Produto com ID {Id} deletado com sucesso", id);
                 return Ok($"Conteúdo do ID {id} deletado com sucesso!");
@@ -199,16 +200,16 @@ namespace WebAPI.net9.Controllers
         /// <param name="marca">Marca do produto (opcional).</param>
         /// <returns>Lista de produtos encontrados ou erro 500.</returns>
         [HttpGet("Buscar")] // Busca os produtos por nome
-        public ActionResult<List<ProdutoModel>> BuscarPorNomeOuMarca(string? nome, string? marca)
+        public async Task<ActionResult<List<ProdutoModel>>> BuscarPorNomeOuMarca(string? nome, string? marca)
         {
             _logger.LogDebug("Iniciando requisição: BuscarPorNomeOuMarca");
 
             try
             {
-                var produtos = _context.Produtos
+                var produtos = await _context.Produtos
                 .Where(p => (nome == null || p.Nome.Contains(nome)) &&
                             (marca == null || p.Marca.Contains(marca)))
-                .ToList();
+                .ToListAsync();
 
                 _logger.LogInformation("Busca por produtos realizada com sucesso. Total {Total}", produtos.Count);
                 return Ok(produtos);
