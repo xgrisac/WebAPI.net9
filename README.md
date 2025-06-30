@@ -65,6 +65,15 @@ Copiar
 Editar
 https://localhost:{porta}/scalar
 
+## 🛡️ Boas Práticas e Melhorias Implementadas
+Para garantir a qualidade, robustez e facilidade de manutenção, este projeto incorpora as seguintes práticas e recursos:
+
+- Validação com Data Annotations: O modelo ProdutoModel utiliza atributos para validar dados automaticamente, garantindo que as informações estejam corretas antes de salvar no banco.
+- Tratamento de erros com Try-Catch: Todos os métodos dos controllers incluem blocos try-catch para capturar exceções, evitar que a API quebre e retornar respostas claras ao cliente.
+- Programação assíncrona com async/await: As operações que acessam o banco de dados são feitas de forma assíncrona, melhorando a performance e a escalabilidade ao evitar bloqueios na aplicação.
+- Comentários XML: O código contém comentários XML nos controllers e modelos para documentar a API e facilitar a geração de documentação automática, além de ajudar na manutenção.
+- Logs para monitoramento: Implementação de logs em diferentes níveis (Debug, Information, Warning, Error) para acompanhar o comportamento da aplicação em tempo real e facilitar a identificação de problemas.
+
 ## 👨‍💻 Autor
 Desenvolvido por **Isac Ribeiro** — estudante de Engenharia de Software, especialista no Desenvolvimento Web, .NET e soluções backend.
 
