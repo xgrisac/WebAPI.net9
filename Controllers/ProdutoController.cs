@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using WebAPI.net9.Data;
+using WebAPI.net9.Interfaces;
 using WebAPI.net9.Models;
 
 namespace WebAPI.net9.Controllers
@@ -14,7 +14,7 @@ namespace WebAPI.net9.Controllers
     [Route("api/[controller]")]
     public class ProdutoController : ControllerBase 
     {
-        private readonly AppDbContext _context;
+        private readonly IAppDbContext _context;
         private readonly ILogger<ProdutoController> _logger; // Logger para registrar informações, avisos e erros
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace WebAPI.net9.Controllers
         /// </summary>
         /// <param name="context">Instância do AppDbContext.</param>
         /// <param name="logger">Instância do ILogger</param>
-        public ProdutoController(AppDbContext context, ILogger<ProdutoController> logger)
+        public ProdutoController(IAppDbContext context, ILogger<ProdutoController> logger)
         {
             _context = context;
             _logger = logger;

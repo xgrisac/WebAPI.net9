@@ -4,6 +4,7 @@ using Scalar.AspNetCore; // Scalar substituindo Swagger para documentação de A
 using Scalar.AspNetCore.Swashbuckle;
 using System.Reflection;
 using WebAPI.net9.Data;
+using WebAPI.net9.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddOpenApi()
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         options.IncludeXmlComments(xmlPath);
     });
+
+builder.Services.AddScoped<IAppDbContext, AppDbContext>(); // Injeta a dependência, permitindo que o contexto do banco de dados seja usado em toda a aplicação
 
 builder.Services.AddDbContext<AppDbContext>(options => // Configuração do DbContext para usar o SQL Server
 {
