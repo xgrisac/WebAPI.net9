@@ -73,6 +73,7 @@ Para garantir a qualidade, robustez e facilidade de manutenção, este projeto i
 - Programação assíncrona com async/await: As operações que acessam o banco de dados são feitas de forma assíncrona, melhorando a performance e a escalabilidade ao evitar bloqueios na aplicação.
 - Comentários XML: O código contém comentários XML nos controllers e modelos para documentar a API e facilitar a geração de documentação automática, além de ajudar na manutenção.
 - Logs para monitoramento: Implementação de logs em diferentes níveis (Debug, Information, Warning, Error) para acompanhar o comportamento da aplicação em tempo real e facilitar a identificação de problemas.
+- Interface IAppDbContext e injeção de dependência: Criação da interface IAppDbContext para desacoplar o acesso ao banco de dados e permitir testes mais fáceis. O controlador ProdutoController passa a depender da interface, seguindo o princípio da inversão de dependência.
 
 ## 👨‍💻 Autor
 Desenvolvido por **Isac Ribeiro** — estudante de Engenharia de Software, especialista no Desenvolvimento Web, .NET e soluções backend.
